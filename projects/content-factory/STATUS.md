@@ -3,7 +3,7 @@
 - 项目名：Content Factory
 - 管理归档仓库：`quantclaws/myclaws`
 - 代码 canonical repo：`quantclaws/content-factory`
-- 当前状态：MVP 已放行，进入产出质量修复与治理收口阶段
+- 当前状态：进入“统一最终需求 → 文档纠偏 → 代码快迭代”阶段；暂停继续沿错误假设扩展功能
 
 ## 单一事实源划分
 
@@ -17,16 +17,26 @@
 
 ## 当前收口项
 
-### Git 收尾
-- [ ] 忽略 `logs/daily.log`
-- [ ] 跟踪 `docs/cf-dly-03/PLAN.md`
-- [ ] 跟踪 `first-run-sources.md`
+### 文档与需求统一（最高优先级）
+- [ ] 将 Leo 本地 PRD 正式归档进 canonical repo：`docs/prd/PRD-v1.md`
+- [ ] 重写/修正 `docs/specs/spec.md` 中与抓取、筛选、组稿相关的主链路定义
+- [ ] 标记已失效或被替代的旧设计，不允许与新要求并存
+- [ ] 把“需求变更治理”写入项目规则并在 Content Factory 执行
 
-### Quantide Daily 导出问题
-- [ ] 长图内容区右侧大片空白：确认导出宽度、容器宽度、截图策略
-- [ ] 日历无边框
-- [ ] 存在英文未翻译
-- [ ] 存在空白条目（疑似 Markdown/HTML 解析问题）
+### 已确认需要纠偏的设计点
+- [ ] 取消“信源静态绑定栏目”作为组稿依据；改为“先抓，再由 LLM 按栏目 prompt 分类”
+- [ ] 明确抓取与组稿分离：组稿只消费本地新增/未处理文章
+- [ ] 固化排他性分类顺序：学术研究 → 大厂动态 → 量化人生/职业规划 → 免费资源 → 全网热搜兜底
+- [ ] 每个栏目必须有独立 prompt；批量按每 20 条送 LLM 判断
+
+### 导出与 Git 收尾（次优先级）
+- [x] 跟踪 `docs/cf-dly-03/PLAN.md`
+- [x] 跟踪 `first-run-sources.md`
+- [ ] 让 `logs/daily.log` 彻底退出 git 跟踪
+- [x] 修复长图内容区右侧空白
+- [x] 修复日历边框/表现问题
+- [x] 修复英文未翻译
+- [x] 修复空白条目
 
 ## 治理决策
 - 不把整个 `leo/workspace/` 作为 git 仓库同步目标。

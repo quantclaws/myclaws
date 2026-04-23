@@ -28,3 +28,27 @@
 - Developers branch from `features`.
 - Before push: sync latest `features`, run relevant checks, then push.
 - Merge `features` into `main` only when Aaron decides.
+
+## Rule 6 — Sync Checkpoints
+- Feature owner must commit code before cross-agent verification.
+- Test owner must verify against a synced sandbox copy of the same Git baseline, not another agent's local directory.
+- Minimum checkpoints:
+  1. spec freeze
+  2. feature-owner green commit
+  3. test-owner synced verification pass
+  4. closeout commit / merge-ready snapshot
+
+## Rule 7 — Requirement Change Governance
+- New requirements may refine, supersede, or invalidate earlier requirements.
+- On every new requirement, the first step is mandatory recall:
+  1. search memory
+  2. inspect canonical docs / PRD / spec / ADR / tasks
+  3. compare the new request against the currently frozen understanding
+- If the new requirement overlaps an existing one, Leo must explicitly ask/confirm whether it:
+  - clarifies the old requirement
+  - partially overrides it
+  - fully replaces it
+- Once a replacement/override is confirmed, stale requirements must be marked invalid in docs/tasks/status rather than silently coexisting.
+- If the change affects architecture, workflow, acceptance criteria, or core prompts, document updates come before further feature work.
+- If active development is proceeding on assumptions invalidated by the new requirement, pause or redirect that development first, then update docs/spec/tasks, then resume coding.
+- Goal: PRD, spec, tasks, and code must converge continuously; do not allow drift across iterations.
